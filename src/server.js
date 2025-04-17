@@ -38,6 +38,9 @@ const formatContestData = (data) => ({
 
 // Routes
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the LeetCode Backend!');
+});
 
 app.get('/api/user/:username', async (req, res) => {
   try {
