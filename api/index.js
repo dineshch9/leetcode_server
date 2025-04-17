@@ -7,7 +7,15 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(cors());
+
+
+const corsOptions = {
+  origin: '*', 
+  methods: ['GET', 'POST', 'DELETE'],  
+  allowedHeaders: ['Content-Type', 'Authorization'] 
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Use the users router for all /api routes
