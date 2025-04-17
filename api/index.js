@@ -12,8 +12,9 @@ const app = express();
 const corsOptions = {
   origin: ['https://leetcode-dashboard-zeta.vercel.app', 'https://leetcode-server-seven.vercel.app'], 
   methods: ['GET', 'POST', 'DELETE'],  
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
