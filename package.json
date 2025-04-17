@@ -4,8 +4,8 @@
   "description": "Unified backend server for LeetCode contest and profile viewer",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
   },
   "dependencies": {
     "axios": "^1.7.2",
