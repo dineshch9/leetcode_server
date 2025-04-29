@@ -136,7 +136,18 @@ router.post('/users/scores', async (req, res) => {
       try {
         const [userResponse, contestResponse, recentAcResponse] = await Promise.all([
           axios.post(LEETCODE_API_ENDPOINT, {
-            query: `\n            query getUserProfile($username: String!) {\n              matchedUser(username: $username) {\n                submitStats {\n                  acSubmissionNum {\n                    difficulty\n                    count\n                  }\n                }\n              }\n            }\n          `,
+            query: `
+            query getUserProfile($username: String!) {
+              matchedUser(username: $username) {
+                submitStats {
+                  acSubmissionNum {
+                    difficulty
+                    count
+                  }
+                }
+              }
+            }
+          `,
             variables: { username }
           }),
           axios.post(LEETCODE_API_ENDPOINT, {
@@ -178,7 +189,12 @@ router.post('/users/scores', async (req, res) => {
           username,
           customScore: calculateCustomScore(contestRating, problemsByDifficulty),
           recentActiveDate,
-          isActive
+          isActive,
+          problemsSolved: {
+            easy: problemsByDifficulty.find(item => item.difficulty === 'Easy')?.count || 0,
+            medium: problemsByDifficulty.find(item => item.difficulty === 'Medium')?.count || 0,
+            hard: problemsByDifficulty.find(item => item.difficulty === 'Hard')?.count || 0
+          }
         };
       } catch (err) {
         // Distinguish between user not found and other errors
