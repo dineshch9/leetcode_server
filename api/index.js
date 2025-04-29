@@ -10,7 +10,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: ['https://leetcode-dashboard-zeta.vercel.app', 'https://leetcode-server-seven.vercel.app'], 
+  origin: ['https://leetcode-dashboard-zeta.vercel.app','http://localhost:5173', 'https://leetcode-server-seven.vercel.app'], 
   methods: ['GET', 'POST', 'DELETE'],  
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true,
