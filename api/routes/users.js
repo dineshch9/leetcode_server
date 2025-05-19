@@ -12,10 +12,12 @@ query getUserContestRanking ($username: String!) {
 }`;
 
 const calculateCustomScore = (contestRating, problemsByDifficulty) => {
-  const alpha = 60; // Weight for rating
-  const beta = 0.45; // Weight for problems solved
-  const normalizedRating = (contestRating || 0) / 3000;
-  
+  const alpha = 1; // Weight for rating
+  const beta = 0.85; // Weight for problems solved
+  // const normalizedRating = (contestRating || 0) / 3000;
+  let adjustedRating = contestRating ? Math.max(0, contestRating - 1400) : 0;
+let normalizedRating = adjustedRating /1.5 ;
+
   const easy = problemsByDifficulty.find(item => item.difficulty === 'Easy')?.count || 0;
   const medium = problemsByDifficulty.find(item => item.difficulty === 'Medium')?.count || 0;
   const hard = problemsByDifficulty.find(item => item.difficulty === 'Hard')?.count || 0;
