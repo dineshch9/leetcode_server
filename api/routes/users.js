@@ -13,7 +13,7 @@ query getUserContestRanking ($username: String!) {
 
 const calculateCustomScore = (contestRating, problemsByDifficulty) => {
   const alpha = 1; // Weight for rating
-  const beta = 0.85; // Weight for problems solved
+  const beta = 0.5; // Weight for problems solved
   // const normalizedRating = (contestRating || 0) / 3000;
   let adjustedRating = contestRating ? Math.max(0, contestRating - 1400) : 0;
 let normalizedRating = adjustedRating /1.5 ;
