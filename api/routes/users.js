@@ -91,8 +91,8 @@ router.post('/users/scores', async (req, res) => {
   }
 
   // Batching and throttling logic
-  const BATCH_SIZE = 10; // Number of concurrent requests
-  const DELAY_MS = 50; // Delay between batches
+  const BATCH_SIZE = 9; // Number of concurrent requests
+  const DELAY_MS = 80; // Delay between batches
 
   async function processInBatches(items, batchSize, handler) {
     const results = [];
